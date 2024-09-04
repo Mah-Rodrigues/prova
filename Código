@@ -1,0 +1,71 @@
+CREATE DATABASE prova_marcela22a;
+USE prova_marcela22a;
+-- Utilize os INSERTS fornecidos, construa o banco de dados, 
+-- crie as respectivas tabelas e Insira os dados correspondentes:
+
+CREATE TABLE Produtos ( 
+    ID_Produto INT PRIMARY KEY, 
+    Nome_Produto VARCHAR(255), 
+    Preco VARCHAR(255), 
+    Categoria VARCHAR(255) 
+); 
+
+CREATE TABLE Estoque ( 
+    ID_Estoque INT PRIMARY KEY,
+    ID_Produto INT, 
+    Quantidade INT, 
+    Localizacao VARCHAR(255),
+    foreign key (ID_Produto) REFERENCES Produtos(ID_Produto)
+); 
+
+INSERT INTO Produtos (ID_Produto, Nome_Produto, Preco, Categoria)
+VALUES
+(1, 'Smartphone X1', '1500.00', 'Eletrônicos'),
+(2, 'Notebook Pro', '3500.00', 'Eletrônicos'),
+(3, 'Cadeira Gamer', '800.00', 'Móveis'),
+(4, 'Fone de Ouvido', '200.00', 'Acessórios'),
+(5, 'Mesa de Escritório', '1200.00', 'Móveis');
+
+INSERT INTO Estoque (ID_Estoque, ID_Produto, Quantidade, Localizacao)
+VALUES
+(1, 1, 50, 'Depósito A'),
+(2, 2, 30, 'Depósito B'),
+(3, 3, 20, 'Depósito A'),
+(4, 4, 100, 'Depósito C'),
+(5, 5, 10, 'Depósito B');
+
+-- Responda usando código SQL:
+
+-- Questão 1:
+-- Liste o nome dos produtos e as respectivas quantidades disponiveis em estoque
+
+SELECT Produtos.Nome_produto, Estoque.Quantidade
+FROM Produtos 
+INNER JOIN Estoque.Quantidade ON Produtos.Nome_Produto = Produto_Quantidade;
+
+-- Questão 2
+
+SELECT Produtos.Nome_Produto, Estoque.Localizacao
+FROM Produtos
+JOIN Estoque
+ON Produtos.Nome_Produto, Estoque.Localizacao;
+
+-- Questão 3
+SELECT Produtos.Categoria, Estoque.Quantidade
+FROM Produtos
+INNER JOIN Estoque.Quantidade ON Produtos.Categoria = Quantidade_Produtos
+WHERE Produtos.Categoria LIKE 'Eletrônicos'
+
+-- Questão 4
+SELECT Produtos.Nome_Produto, Produtos.Preco, Estoque.localizacao
+FROM Produtos.Nome_Produto On Estoque.localizacao = Localizacao_Produto
+INNER JOIN Pro
+WHERE Produtos.Preco LIKE '1000.00'
+
+-- Questão 5
+
+SELECT Produtos.Nome_Produto, Produtos.Preco, Estoque.Quantidade
+FROM Produtos
+INNER JOIN Estoque ON Produtos.Nome_Produto = Estoque.Produtos
+ORDER BY Estoque.Quantidade DESC
+
